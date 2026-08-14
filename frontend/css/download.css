@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f7fb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.download-card {
+    width: 450px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.download-card h1 {
+    color: #1e3a8a;
+    margin-bottom: 10px;
+}
+
+.download-card p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+input[type="file"] {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.file-details {
+    background: #f8fafc;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.buttons button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#downloadBtn {
+    background: #2563eb;
+    color: white;
+}
+
+#downloadBtn:hover {
+    background: #1d4ed8;
+}
+
+#backBtn {
+    background: #6b7280;
+    color: white;
+}
+
+#backBtn:hover {
+    background: #4b5563;
+}

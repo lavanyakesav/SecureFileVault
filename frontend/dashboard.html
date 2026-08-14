@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CipherVault | Dashboard</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <h2>CipherVault</h2>
+    </div>
+
+    <ul>
+
+        <li class="active">
+            <i class="fa-solid fa-house"></i>
+            Dashboard
+        </li>
+
+        <li id="uploadBtn">
+            <i class="fa-solid fa-upload"></i>
+            Upload File
+        </li>
+
+        <li id="filesBtn">
+            <i class="fa-solid fa-folder"></i>
+            My Files
+        </li>
+
+        <li id="logsBtn">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            Activity Logs
+        </li>
+
+        <li id="logoutBtn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </li>
+
+    </ul>
+
+</div>
+
+
+<div class="main-content">
+
+    <div class="header">
+        <h1>Welcome 👋</h1>
+        <p>Manage your files securely.</p>
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card" id="uploadCard">
+            <i class="fa-solid fa-upload"></i>
+            <h3>Upload</h3>
+            <p>Upload and encrypt your files securely.</p>
+        </div>
+
+
+        <div class="card" id="filesCard">
+            <i class="fa-solid fa-folder"></i>
+            <h3>My Files</h3>
+            <p>View and securely decrypt your files.</p>
+        </div>
+
+    </div>
+
+
+    <div class="recent-files">
+
+        <h2>Recent Files</h2>
+
+        <table>
+
+            <tr>
+                <th>File Name</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+
+            <tr>
+                <td>No Files Yet</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>

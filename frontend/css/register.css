@@ -1,0 +1,412 @@
+/* =====================================
+   RESET
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =====================================
+   BODY
+===================================== */
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(59, 130, 246, 0.35),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(37, 99, 235, 0.3),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #172554,
+            #1e40af
+   
+    );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+}
+
+
+/* =====================================
+   REGISTER CONTAINER
+===================================== */
+
+.register-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* =====================================
+   REGISTER CARD
+===================================== */
+
+.register-card {
+    width: 100%;
+    max-width: 480px;
+
+    background: #ffffff;
+
+    padding: 38px 42px;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 18px 50px rgba(30, 70, 150, 0.15);
+}
+
+
+/* =====================================
+   LOGO
+===================================== */
+
+.logo {
+    width: 68px;
+    height: 68px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 18px;
+
+    background: #edf3ff;
+
+    color: #2563eb;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 32px;
+}
+
+
+/* =====================================
+   HEADING
+===================================== */
+
+.register-card h1 {
+    text-align: center;
+
+    color: #1d4ed8;
+
+    font-size: 30px;
+
+    margin-bottom: 8px;
+}
+
+
+.subtitle {
+    text-align: center;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    margin-bottom: 28px;
+}
+
+
+/* =====================================
+   INPUT GROUP
+===================================== */
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+
+.input-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #334155;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* =====================================
+   NORMAL INPUT
+===================================== */
+
+.input-field {
+    position: relative;
+
+    width: 100%;
+}
+
+
+.input-field > i {
+    position: absolute;
+
+    left: 14px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #64748b;
+
+    font-size: 15px;
+}
+
+
+.input-field input {
+    width: 100%;
+
+    height: 48px;
+
+    padding: 0 14px 0 42px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    color: #1e293b;
+
+    background: #ffffff;
+
+    transition: 0.2s;
+}
+
+
+.input-field input:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+
+.input-field input::placeholder {
+    color: #94a3b8;
+}
+
+
+/* =====================================
+   PASSWORD FIELD
+===================================== */
+
+.password-field {
+    position: relative;
+
+    width: 100%;
+}
+
+
+.password-field .input-icon {
+    position: absolute;
+
+    left: 14px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #64748b;
+
+    font-size: 15px;
+
+    z-index: 2;
+}
+
+
+.password-field input {
+    width: 100%;
+
+    height: 48px;
+
+    padding: 0 48px 0 42px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    color: #1e293b;
+
+    background: #ffffff;
+
+    transition: 0.2s;
+}
+
+
+.password-field input:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+
+.password-field input::placeholder {
+    color: #94a3b8;
+}
+
+
+/* =====================================
+   PASSWORD SHOW / HIDE BUTTON
+===================================== */
+
+.password-toggle {
+    position: absolute;
+
+    right: 12px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 30px;
+    height: 30px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #64748b;
+
+    cursor: pointer;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 16px;
+
+    padding: 0;
+}
+
+
+.password-toggle:hover {
+    color: #2563eb;
+}
+
+
+/* =====================================
+   REGISTER BUTTON
+===================================== */
+
+.register-btn {
+    width: 100%;
+
+    height: 50px;
+
+    margin-top: 8px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.register-btn:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 6px 15px rgba(37, 99, 235, 0.20);
+}
+
+
+.register-btn i {
+    margin-right: 8px;
+}
+
+
+/* =====================================
+   LOGIN LINK
+===================================== */
+
+.login-link {
+    text-align: center;
+
+    margin-top: 22px;
+
+    font-size: 14px;
+
+    color: #64748b;
+}
+
+
+.login-link a {
+    margin-left: 5px;
+
+    color: #2563eb;
+
+    text-decoration: none;
+
+    font-weight: 600;
+}
+
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+
+/* =====================================
+   MOBILE RESPONSIVE
+===================================== */
+
+@media (max-width: 520px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .register-card {
+        padding: 30px 22px;
+
+        border-radius: 20px;
+    }
+
+    .register-card h1 {
+        font-size: 26px;
+    }
+
+}
