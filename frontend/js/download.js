@@ -36,7 +36,7 @@ downloadBtn.addEventListener("click", () => {
     }
 
     window.open(
-        `http://localhost:5000/api/decrypt/${selectedFile.name}`,
+        `https://securefilevault-2skt.onrender.com/api/files/download/`,
         "_blank"
     );
 

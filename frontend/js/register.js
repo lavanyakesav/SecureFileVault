@@ -91,7 +91,7 @@ document.getElementById("registerForm").addEventListener(
         try {
 
             const response = await fetch(
-                "http://localhost:5000/api/users/register",
+                "https://securefilevault-2skt.onrender.com/api/users/register",
                 {
                     method: "POST",
 

@@ -191,14 +191,13 @@ encryptBtn.addEventListener(
 
 
             const response =
-                await fetch(
-                    "http://localhost:5000/api/upload",
-                    {
-                        method: "POST",
-                        body: formData
-                    }
-                );
-
+    await fetch(
+        "https://securefilevault-2skt.onrender.com/api/upload",
+        {
+            method: "POST",
+            body: formData
+        }
+    );
 
             const data =
                 await response.json();

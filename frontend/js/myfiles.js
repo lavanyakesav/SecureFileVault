@@ -257,7 +257,7 @@ async function decryptWithOTP(fileName) {
         // =================================
 
         const decryptURL =
-            `http://localhost:5000/api/decrypt/${encodeURIComponent(fileName)}`;
+    `https://securefilevault-2skt.onrender.com/api/decrypt/${encodeURIComponent(fileName)}`;
 
         console.log(
             "Decrypt URL:",
