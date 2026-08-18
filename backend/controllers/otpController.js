@@ -17,6 +17,7 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS.replace(/\s/g, "").trim()
 }
 });
+console.log("🔥 OTP CONTROLLER LOADED");
 
 // Test Gmail connection when server starts
 transporter.verify((error, success) => {
