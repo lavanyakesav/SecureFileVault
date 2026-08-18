@@ -2,15 +2,23 @@ const tableBody = document.getElementById("fileTable");
 const backBtn = document.getElementById("backBtn");
 
 // =====================================
+// BACKEND API URL
+// =====================================
+
+const API_URL = "https://securefilevault-2skt.onrender.com";
+
+
+// =====================================
 // LOAD ENCRYPTED FILES
 // =====================================
 
 async function loadFiles() {
 
     try {
+
         const response = await fetch(
-    "https://securefilevault-2skt.onrender.com/api/files"
-);
+            `${API_URL}/api/files`
+        );
 
         const data = await response.json();
 
@@ -82,9 +90,16 @@ async function loadFiles() {
 
 async function decryptWithOTP(fileName) {
 
-    console.log("Selected File:", fileName);
+    console.log(
+        "Selected File:",
+        fileName
+    );
 
-    // Get logged-in username
+
+    // =================================
+    // GET LOGGED-IN USERNAME
+    // =================================
+
     const username =
         localStorage.getItem("username");
 
@@ -92,6 +107,7 @@ async function decryptWithOTP(fileName) {
         "Logged-in Username:",
         username
     );
+
 
     if (!username) {
 
@@ -112,7 +128,7 @@ async function decryptWithOTP(fileName) {
         // =================================
 
         const emailResponse = await fetch(
-            `http://localhost:5000/api/users/user-email?username=${encodeURIComponent(username)}`
+            `${API_URL}/api/users/user-email?username=${encodeURIComponent(username)}`
         );
 
         const emailData =
@@ -122,6 +138,7 @@ async function decryptWithOTP(fileName) {
             "Email Response:",
             emailData
         );
+
 
         if (
             !emailResponse.ok ||
@@ -135,6 +152,7 @@ async function decryptWithOTP(fileName) {
             return;
         }
 
+
         const email =
             emailData.email;
 
@@ -143,9 +161,8 @@ async function decryptWithOTP(fileName) {
         // SEND OTP
         // =================================
 
-        const emailResponse = await fetch(
-    `https://securefilevault-2skt.onrender.com/api/users/user-email?username=${encodeURIComponent(username)}`
-);
+        const otpResponse = await fetch(
+            `${API_URL}/api/send-otp`,
             {
                 method: "POST",
 
@@ -160,6 +177,7 @@ async function decryptWithOTP(fileName) {
             }
         );
 
+
         const otpData =
             await otpResponse.json();
 
@@ -167,6 +185,7 @@ async function decryptWithOTP(fileName) {
             "OTP Response:",
             otpData
         );
+
 
         if (!otpResponse.ok) {
 
@@ -194,6 +213,7 @@ async function decryptWithOTP(fileName) {
                 "Enter the 6-digit OTP:"
             );
 
+
         if (!otp) {
 
             return;
@@ -205,8 +225,8 @@ async function decryptWithOTP(fileName) {
         // =================================
 
         const verifyResponse =
-    await fetch(
-        "https://securefilevault-2skt.onrender.com/api/verify-otp",
+            await fetch(
+                `${API_URL}/api/verify-otp`,
                 {
                     method: "POST",
 
@@ -257,7 +277,7 @@ async function decryptWithOTP(fileName) {
         // =================================
 
         const decryptURL =
-    `https://securefilevault-2skt.onrender.com/api/decrypt/${encodeURIComponent(fileName)}`;
+            `${API_URL}/api/decrypt/${encodeURIComponent(fileName)}`;
 
         console.log(
             "Decrypt URL:",
