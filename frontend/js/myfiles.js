@@ -8,10 +8,9 @@ const backBtn = document.getElementById("backBtn");
 async function loadFiles() {
 
     try {
-
         const response = await fetch(
-            "http://localhost:5000/api/files"
-        );
+    "https://securefilevault-2skt.onrender.com/api/files"
+);
 
         const data = await response.json();
 
@@ -144,8 +143,9 @@ async function decryptWithOTP(fileName) {
         // SEND OTP
         // =================================
 
-        const otpResponse = await fetch(
-            "http://localhost:5000/api/send-otp",
+        const emailResponse = await fetch(
+    `https://securefilevault-2skt.onrender.com/api/users/user-email?username=${encodeURIComponent(username)}`
+);
             {
                 method: "POST",
 
@@ -205,8 +205,8 @@ async function decryptWithOTP(fileName) {
         // =================================
 
         const verifyResponse =
-            await fetch(
-                "http://localhost:5000/api/verify-otp",
+    await fetch(
+        "https://securefilevault-2skt.onrender.com/api/verify-otp",
                 {
                     method: "POST",
 
