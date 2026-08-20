@@ -1,36 +1,10 @@
-const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const otpStore = {};
 
-const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
-    requireTLS: true,
-
-    tls: {
-        rejectUnauthorized: false
-    },
-
-   auth: {
-    user: process.env.EMAIL_USER.trim(),
-    pass: process.env.EMAIL_PASS.replace(/\s/g, "").trim()
-}
-});
 console.log("🔥 OTP CONTROLLER LOADED");
-
-// Test Gmail connection when server starts
-transporter.verify((error, success) => {
-
-    if (error) {
-        console.error("❌ Gmail SMTP Error:");
-        console.error(error);
-    } else {
-        console.log("✅ Gmail SMTP Ready");
-    }
-
-});
-
 
 // =========================
 // SEND OTP
@@ -39,6 +13,8 @@ transporter.verify((error, success) => {
 exports.sendOTP = async (req, res) => {
 
     const { email } = req.body;
+
+    console.log("📧 OTP requested for:", email);
 
     if (!email) {
         return res.status(400).json({
@@ -56,24 +32,50 @@ exports.sendOTP = async (req, res) => {
         expiresAt: Date.now() + 5 * 60 * 1000
     };
 
+    console.log("🔐 OTP generated");
+
     try {
 
-        await transporter.sendMail({
-            from: process.env.EMAIL_USER,
-            to: email,
-            subject: "CipherVault - OTP Verification",
+        const { data, error } = await resend.emails.send({
+            from: "SecureFileVault <onboarding@resend.dev>",
+            to: [email],
+            subject: "SecureFileVault - OTP Verification",
             html: `
-                <h2>CipherVault</h2>
-                <p>Your OTP for file decryption is:</p>
-                <h1>${otp}</h1>
-                <p>This OTP is valid for 5 minutes.</p>
-                <p>Do not share this OTP with anyone.</p>
+                <div style="font-family: Arial, sans-serif;">
+                    <h2>SecureFileVault</h2>
+
+                    <p>Your OTP for file decryption is:</p>
+
+                    <h1 style="letter-spacing: 5px;">
+                        ${otp}
+                    </h1>
+
+                    <p>This OTP is valid for 5 minutes.</p>
+
+                    <p>
+                        Do not share this OTP with anyone.
+                    </p>
+                </div>
             `
         });
 
-        console.log("✅ OTP sent successfully to:", email);
+        if (error) {
 
-        res.json({
+            console.error("❌ Resend API Error:");
+            console.error(error);
+
+            delete otpStore[email];
+
+            return res.status(500).json({
+                success: false,
+                message: "Failed to send OTP"
+            });
+        }
+
+        console.log("✅ OTP sent successfully");
+        console.log("📨 Resend ID:", data?.id);
+
+        return res.json({
             success: true,
             message: "OTP sent successfully"
         });
@@ -85,11 +87,10 @@ exports.sendOTP = async (req, res) => {
 
         delete otpStore[email];
 
-        res.status(500).json({
+        return res.status(500).json({
             success: false,
             message: "Failed to send OTP"
         });
-
     }
 };
 
@@ -101,6 +102,8 @@ exports.sendOTP = async (req, res) => {
 exports.verifyOTP = (req, res) => {
 
     const { email, otp } = req.body;
+
+    console.log("🔍 OTP verification requested for:", email);
 
     if (!email || !otp) {
         return res.status(400).json({
@@ -138,9 +141,10 @@ exports.verifyOTP = (req, res) => {
 
     delete otpStore[email];
 
-    res.json({
+    console.log("✅ OTP verified successfully");
+
+    return res.json({
         success: true,
         message: "OTP verified successfully"
     });
-
 };
